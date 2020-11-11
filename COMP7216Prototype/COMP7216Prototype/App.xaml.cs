@@ -10,7 +10,7 @@ namespace COMP7216Prototype
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new View.LogSearchPage();
         }
 
         protected override void OnStart()
