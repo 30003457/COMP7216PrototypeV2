@@ -68,16 +68,13 @@ namespace COMP7216Prototype
             DateTime time = DateTime.Now.ToLocalTime();
 
             cr.creditAmount = amount;
-            cr.timeStampDate = DateTime.Now.ToString();
-            cr.timeStampTime = time.ToString();
-            cr.creditTypeId = creditType;
+            cr.timeStampDate = DateTime.Now.ToString("dd/MM/yyyy");
+            cr.timeStampTime = DateTime.Now.ToString("hh:mm");
 
             //Fix
-            cr.requesterId = 0;
-            cr.requesterId = 1;
-            cr.shareUserId = 2;
-            cr.shareId = 3;
-            cr.statement = "Fix";
+            cr.requesterId = 2;
+            cr.shareUserId = 1;
+
 
             //Resets entry boxes
             CreditorEntryBox.Text = "";
