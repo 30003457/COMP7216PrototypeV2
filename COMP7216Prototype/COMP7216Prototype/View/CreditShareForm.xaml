@@ -24,7 +24,7 @@
                 <Label Text="Credit Share" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Large"/>
                 
                 <Label Text="Receiver" Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Medium"/>
-                <Entry x:Name="entryReceiver" Grid.Column="2" Grid.Row="1" Placeholder="Receiver Account / Phone Number" PlaceholderColor="Olive"/>
+                <Entry x:Name="entryReceiver" Grid.Column="2" Grid.Row="1" Placeholder="Receiver Account / Phone Number" PlaceholderColor="LightGray"/>
                 
                 <Button x:Name="btnReceiver" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Check Receiver"  BackgroundColor="Black" TextColor="White" Clicked="BtnReceiver_Clicked"/>
 
@@ -42,7 +42,7 @@
 
 
                 <Label Text="Credit Amount" Grid.Column="1" Grid.Row="4" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Medium"/>
-                <Entry x:Name="entryCreditAmount" Grid.Column="2" Grid.Row="4" Text=" Credit Amount"/>
+                <Entry x:Name="entryCreditAmount" Grid.Column="2" Grid.Row="4"  Placeholder="Credit Amount" PlaceholderColor="LightGray"/>
 
                 <Button x:Name="BtnConfirmation" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6" Text="Submit" BackgroundColor="Black" TextColor="White" Clicked="BtnConfirmation_Clicked"/>
 

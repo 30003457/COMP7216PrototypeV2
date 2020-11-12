@@ -1,17 +1,12 @@
-﻿using COMP7216Prototype.Model;
+﻿
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace COMP7216Prototype.View
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CreditShareForm : ContentPage
 	{
  public int receiver;
@@ -19,9 +14,7 @@ namespace COMP7216Prototype.View
 		public CreditShareForm ()
 		{
 			InitializeComponent ();
-
-
-
+            
 		}
 
 
@@ -52,13 +45,15 @@ namespace COMP7216Prototype.View
 
         public async void BtnConfirmation_Clicked(object sender, EventArgs e) 
         {
-            var action = await DisplayAlert("Are the Details Correct?", "Click Yes to Carry on or No to Change Details", "Yes", "No");
-            
-            if (action)
-            {
-                App.Current.MainPage = new  Transfer();
-            }
+
+            var action = await DisplayActionSheet("Account: " + entryReceiver.Text, "Credit Type: " + pickerCreditType.SelectedItem.ToString(),  "Amount: " + entryCreditAmount.Text, "Transfer Credit?" , "Yes", "No" );
+            Console.WriteLine("Save Data: "+ action);
+
+
+            await DisplayAlert("Transfer", "Complete", "OK");
+
 
         }
+
     }
 }
