@@ -33,7 +33,7 @@
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Minutes</x:String>
-                            <x:String>Dollars</x:String>
+                            <x:String>Texts</x:String>
                             <x:String>Data</x:String>
                         </x:Array>
                     </Picker.ItemsSource>                    
@@ -46,6 +46,7 @@
 
                 <Button x:Name="BtnConfirmation" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6" Text="Submit" BackgroundColor="Black" TextColor="White" Clicked="BtnConfirmation_Clicked"/>
 
+                <Button x:Name="BtnCancel" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" Text="Cancel" BackgroundColor="Black" TextColor="White" Clicked="BtnCancel_Clicked"/>
 
 
 

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -46,14 +47,29 @@ namespace COMP7216Prototype.View
         public async void BtnConfirmation_Clicked(object sender, EventArgs e) 
         {
 
-            var action = await DisplayActionSheet("Account: " + entryReceiver.Text, "Credit Type: " + pickerCreditType.SelectedItem.ToString(),  "Amount: " + entryCreditAmount.Text, "Transfer Credit?" , "Yes", "No" );
-            Console.WriteLine("Save Data: "+ action);
+            var receviverAccount = entryReceiver.Text;
+            var creditType = pickerCreditType.SelectedItem;
+            var amount = entryCreditAmount;
+
+            bool answer = await DisplayAlert( "Transfer Credit?","Click Yes To continue" , "Yes", "No" );
+            
 
 
-            await DisplayAlert("Transfer", "Complete", "OK");
+            if (answer == true)
+            {
+                await DisplayAlert("Transfer", "Complete", "OK");
 
+            }
+            else
+            {
+                return;
+            }
 
         }
 
+        private void BtnCancel_Clicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new MainPage();
+        }
     }
 }
