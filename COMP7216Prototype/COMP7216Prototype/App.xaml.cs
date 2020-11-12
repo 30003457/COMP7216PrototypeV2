@@ -14,7 +14,7 @@ namespace COMP7216Prototype
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new MainPage());
         }
 
         public  static SQLiteHelper SQLiteDb

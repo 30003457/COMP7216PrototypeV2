@@ -12,11 +12,19 @@ namespace COMP7216Prototype
 {
     public partial class MainPage : ContentPage
     {
-        new DataAccessLayer dal = new DataAccessLayer();
-        new CreditRequests cr;
+        DataAccessLayer dal = new DataAccessLayer();
+        CreditRequests cr = new CreditRequests();
+        public string status { get; set; }
         public MainPage()
         {
             InitializeComponent();
+            var results = dal.db.Query<CreditTypes>("SELECT * FROM CreditTypes");
+            foreach (var item in results)
+            {
+                status += $"{item.creditTypeId} - {item.creditType}\n";
+            }
+            BindingContext = null;
+            BindingContext = this;
         }
 
         //Validates the form, checking that all entry boxes are filled and then confirms the form allowing the user to send their request
@@ -80,6 +88,8 @@ namespace COMP7216Prototype
             CreditorEntryBox.Text = "";
             CreditTypePicker.SelectedItem = null;
             CreditAmountEntryBox.Text = "";
+
+
         }
     }
 }
