@@ -22,7 +22,7 @@ namespace COMP7216Prototype.View
         }
         private async void BtnShare_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LogSearchPage());
+            await Navigation.PushAsync(new CreditShareForm());
         }
         private async void BtnHistory_Clicked(object sender, EventArgs e)
         {
