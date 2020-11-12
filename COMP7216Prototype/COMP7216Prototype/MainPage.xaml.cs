@@ -71,9 +71,7 @@ namespace COMP7216Prototype
 
             SendRequestButton.SetValue(IsVisibleProperty, false);
 
-            int amount = int.Parse(CreditAmountEntryBox.Text.ToString());
-            int creditType = int.Parse(CreditTypePicker.SelectedItem.ToString());
-            DateTime time = DateTime.Now.ToLocalTime();
+            double amount = Convert.ToDouble(CreditAmountEntryBox.Text);
 
             cr.creditAmount = amount;
             cr.timeStampDate = DateTime.Now.ToString("dd/MM/yyyy");
@@ -82,7 +80,13 @@ namespace COMP7216Prototype
             //Fix
             cr.requesterId = 2;
             cr.shareUserId = 1;
-
+            cr.creditTypeId = 3;
+            cr.creditAmount = amount;
+            cr.requestAccepted = false;
+            cr.shareId = -1;
+            
+            //Logging
+            dal.db.Insert(cr);
 
             //Resets entry boxes
             CreditorEntryBox.Text = "";
