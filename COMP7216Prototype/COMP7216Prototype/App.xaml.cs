@@ -13,7 +13,7 @@ namespace COMP7216Prototype
         {
             InitializeComponent();
 
-            MainPage = new CreditShareForm();
+            MainPage = new NavigationPage(new CreditShareForm());
         }
 
         protected override void OnStart()
