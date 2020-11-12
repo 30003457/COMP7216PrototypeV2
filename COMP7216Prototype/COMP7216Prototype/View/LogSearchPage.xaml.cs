@@ -33,7 +33,7 @@ namespace COMP7216Prototype.View
 
         private async void SearchRequestsClicked(object sender, EventArgs e)
         {
-            var results = searchController.SearchShares(entryRequestSearch.Text, loggedInUser);
+            var results = searchController.SearchRequests(entryRequestSearch.Text, loggedInUser);
             await Navigation.PushAsync(new ResultsReportPage(results, loggedInUser));
         }
 

@@ -23,6 +23,7 @@ namespace COMP7216Prototype.View
             reportController.SetRequestStatements();
             lvResults.ItemsSource = null;
             lvResults.ItemsSource = reportController.Requests;
+            BindingContext = null;
             BindingContext = reportController;
         }
 
@@ -34,6 +35,7 @@ namespace COMP7216Prototype.View
             reportController.SetShareStatements();
             lvResults.ItemsSource = null;
             lvResults.ItemsSource = reportController.Shares;
+            BindingContext = null;
             BindingContext = reportController;
         }
     }

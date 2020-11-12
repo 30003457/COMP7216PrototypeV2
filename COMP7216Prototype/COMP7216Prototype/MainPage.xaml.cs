@@ -15,27 +15,26 @@ namespace COMP7216Prototype
         DataAccessLayer dal = new DataAccessLayer();
         CreditRequests cr = new CreditRequests();
         public Customers loggedInUser { get; set; }
+        public List<Customers> searchQuery { get; set; }
+        public bool queryVisible { get; set; }
+        int creditorId;
         public MainPage(Customers _loggedInUser)
         {
             InitializeComponent();
-            //var results = dal.db.Query<CreditTypes>("SELECT * FROM CreditTypes");
-            //foreach (var item in results)
-            //{
-            //    status += $"{item.creditTypeId} - {item.creditType}\n";
-            //}
-            //BindingContext = null;
-            //BindingContext = this;
             loggedInUser = _loggedInUser;
+            queryVisible = false;
+            BindingContext = this;
         }
 
         //Validates the form, checking that all entry boxes are filled and then confirms the form allowing the user to send their request
         async void ConfrimButton(object sender, EventArgs e)
         {
+            int creditTypeIndex = -1;
             var creditorValue = CreditorEntryBox.Text;
-            var dataTypeValue = CreditTypePicker.SelectedItem;
+            creditTypeIndex = CreditTypePicker.SelectedIndex;
             var amountValue = CreditAmountEntryBox.Text;
             
-            if(creditorValue == "" || dataTypeValue == null || amountValue == "")
+            if(creditorValue == "" || creditTypeIndex == -1 || amountValue == "")
             {
                 await DisplayAlert("Alert", "Please filled all fields before confirming", "OK");
             }
@@ -45,56 +44,58 @@ namespace COMP7216Prototype
                     " button to send your credit request to the selected creditors", "OK");
 
                 SendRequestButton.SetValue(IsVisibleProperty, true);
-
-                //int amount = int.Parse(amountValue.ToString());
-                //int creditType = int.Parse(dataTypeValue.ToString());
-                //DateTime time = DateTime.Now.ToLocalTime();
-
-                //cr.creditAmount = amount;
-                //cr.timeStampDate = DateTime.Now.ToString();
-                //cr.timeStampTime = time.ToString();
-                //cr.creditTypeId = creditType;
-
-                ////Fix
-                //cr.requesterId = 0;
-                //cr.requesterId = 1;
-                //cr.shareUserId = 2;
-                //cr.shareId = 3;
-                //cr.statement = "Fix";
             }
         }
 
         //Sends the credit request to the selected creditor and resets the entry boxes
         async void SendRequest(object sender, EventArgs e)
         {
-            await DisplayAlert("Success", "Your credit request has been sent to the selected creditor," +
-                " you will be alerted when the creditor has responded to your request", "OK");
-
             SendRequestButton.SetValue(IsVisibleProperty, false);
 
             double amount = Convert.ToDouble(CreditAmountEntryBox.Text);
 
-            cr.creditAmount = amount;
-            cr.timeStampDate = DateTime.Now.ToString("dd/MM/yyyy");
-            cr.timeStampTime = DateTime.Now.ToString("hh:mm");
-
-            //Fix
-            cr.requesterId = 2;
-            cr.shareUserId = 1;
-            cr.creditTypeId = 3;
-            cr.creditAmount = amount;
-            cr.requestAccepted = false;
-            cr.shareId = -1;
-            
-            //Logging
-            dal.db.Insert(cr);
+            //copied logic
+            //send logic
+            //grab the creditor's id
+            //send request
+            //log the request
+            dal.db.Insert(new CreditRequests
+            {
+                creditAmount = amount,
+                creditTypeId = CreditTypePicker.SelectedIndex + 1,
+                requesterId = loggedInUser.customerId,
+                shareUserId = creditorId,
+                timeStampDate = DateTime.Now.ToString("dd/MM/yyyy"),
+                timeStampTime = DateTime.Now.ToString("hh:mm"),
+                requestAccepted = false
+            });
 
             //Resets entry boxes
             CreditorEntryBox.Text = "";
             CreditTypePicker.SelectedItem = null;
             CreditAmountEntryBox.Text = "";
 
+            await DisplayAlert("Success", "Your credit request has been sent to the selected creditor," +
+                " you will be alerted when the creditor has responded to your request", "OK");
+            await Navigation.PopAsync();
 
+        }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            CreditorEntryBox.Text = searchQuery[e.ItemIndex].phoneNumber;
+            creditorId = searchQuery[e.ItemIndex].customerId;
+            queryVisible = false;
+            BindingContext = null;
+            BindingContext = this;
+        }
+
+        private void CreditorEntryBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            queryVisible = true;
+            searchQuery = dal.db.Query<Customers>($"SELECT * FROM Customers WHERE phoneNumber LIKE '{e.NewTextValue}%' AND NOT customerId={loggedInUser.customerId}");
+            BindingContext = null;
+            BindingContext = this;
         }
     }
 }

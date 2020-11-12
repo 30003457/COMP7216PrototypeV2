@@ -19,7 +19,7 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Label Text="Credit Shares" TextColor="White" FontSize="Large"/>
-                        <Entry x:Name="entryShareSearch" Placeholder="Search here..." Grid.Row="1" TextColor="White"/>
+                        <Entry x:Name="entryShareSearch" Placeholder="Dates e.g. 01/01/2020" Grid.Row="1" TextColor="White"/>
                         <Button Text="Search" Clicked="SearchSharesClicked" Grid.Column="1" Grid.Row="1" CornerRadius="5"/>
                         <Button Text="View All" Clicked="ViewAllSharesClicked" Grid.Row="2" CornerRadius="5" Grid.ColumnSpan="2"/>
                     </Grid>
@@ -35,7 +35,7 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Label Text="Credit Requests" TextColor="White" FontSize="Large"/>
-                        <Entry x:Name="entryRequestSearch" Placeholder="Search here..." Grid.Row="1" TextColor="White"/>
+                        <Entry x:Name="entryRequestSearch" Placeholder="Dates e.g. 01/01/2020" Grid.Row="1" TextColor="White"/>
                         <Button Text="Search" Clicked="SearchRequestsClicked" Grid.Row="1" Grid.Column="1" CornerRadius="5"/>
                         <Button Text="View All" Clicked="ViewAllRequestsClicked" Grid.Row="2" CornerRadius="5" Grid.ColumnSpan="2"/>
                     </Grid>

@@ -14,20 +14,39 @@
                 <Label Text="Enter creditor" FontSize="20" Padding="10,10,30,10"
                        TextColor="White"/>
                 <Entry x:Name="CreditorEntryBox" Placeholder="eg. 0221731768"
-                       TextColor="White" ></Entry>
+                       TextColor="White" TextChanged="CreditorEntryBox_TextChanged"></Entry>
+                <StackLayout IsVisible="{Binding queryVisible}">
+                    <Label Text="Please select:" TextColor="White"/>
+                    <ListView ItemsSource="{Binding searchQuery}" ItemTapped="ListView_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label Text="{Binding phoneNumber}" TextColor="White"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding firstName}" TextColor="LightGray"/>
+                                            <Label Text="{Binding lastName}" TextColor="LightGray"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
                 <Label Text="Select credit type" FontSize="20" Padding="10,10,30,10"
                        TextColor="White"/>
                 <Picker x:Name="CreditTypePicker" Title="Select a credit type"
                         TextColor="White">
                     <Picker.Items>
-                        <x:String>Data</x:String>
+                        <x:String>Credits</x:String>
                         <x:String>Minutes</x:String>
+                        <x:String>Data</x:String>
                         <x:String>Texts</x:String>
                     </Picker.Items>
                 </Picker>
                 <Label Text="Enter credit amount" FontSize="20" Padding="10,10,30,10"
                        TextColor="White"/>
-                <Entry x:Name="CreditAmountEntryBox" Placeholder="eg. 100mb, 20 minutes, 100 texts"
+                <Entry x:Name="CreditAmountEntryBox" Placeholder="eg. 0.5 GB, 20 minutes, 100 texts"
                        TextColor="White"></Entry>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                     <Button Text="Confirm" Clicked="ConfrimButton"
