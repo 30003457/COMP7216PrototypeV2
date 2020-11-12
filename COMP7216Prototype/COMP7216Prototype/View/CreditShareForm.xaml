@@ -13,7 +13,7 @@
                     <Label Text="Receiver" Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Large"
                            TextColor="White"/>
                     <Entry x:Name="entryReceiver" Grid.Column="2" Grid.Row="1" Placeholder="Ph number e.g. 123-123-1234" PlaceholderColor="LightGray"
-                           TextChanged="entryReceiver_TextChanged"/>
+                           TextChanged="entryReceiver_TextChanged" TextColor="Black"/>
                     <StackLayout IsVisible="{Binding queryVisible}">
                         <Label Text="Please select:" TextColor="White"/>
                         <ListView ItemsSource="{Binding searchQuery}" ItemTapped="ListView_ItemTapped">
@@ -35,7 +35,7 @@
 
                     <Label Text="Credit Type" Grid.Column="1" Grid.Row="3" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Large"
                            TextColor="White"/>
-                    <Picker x:Name="pickerCreditType" Title="Select Credit Type" TitleColor="White">
+                    <Picker x:Name="pickerCreditType" Title="Select Credit Type" TitleColor="Black">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Credits</x:String>
@@ -49,14 +49,16 @@
 
                     <Label Text="Credit Amount" Grid.Column="1" Grid.Row="4" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Large"
                            TextColor="White"/>
-                    <Entry x:Name="entryCreditAmount" Grid.Column="2" Grid.Row="4"  Placeholder="Credit amount" PlaceholderColor="LightGray"/>
+                    <Entry x:Name="entryCreditAmount" Grid.Column="2" Grid.Row="4"  Placeholder="Credit amount" PlaceholderColor="LightGray"
+                           TextColor="Black"/>
 
                     <Grid>
                         <Button x:Name="BtnConfirmation"  Text="Submit"  Clicked="BtnConfirmation_Clicked"
-                            CornerRadius="5" Grid.Column="1"/>
+                            CornerRadius="5" Grid.Column="1"
+                                BackgroundColor="LightGray"/>
 
                         <Button x:Name="BtnCancel" Text="Cancel" Clicked="BtnCancel_Clicked"
-                            CornerRadius="5"/>
+                            CornerRadius="5" BackgroundColor="LightGray"/>
                     </Grid>
                     
 

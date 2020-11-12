@@ -19,18 +19,19 @@
                     <Label Text="Address:" Grid.Row="3" TextColor="White" VerticalOptions="Center"/>
                     <Label Text="Phone Number:" Grid.Row="4" TextColor="White" VerticalOptions="Center"/>
                     <Label Text="Password:" Grid.Row="5" TextColor="White" VerticalOptions="Center"/>
-                    <Entry Text="{Binding newCustomer.firstName}" Grid.Column="1" Grid.Row="0" TextColor="White" VerticalOptions="Center"/>
-                    <Entry Text="{Binding newCustomer.lastName}" Grid.Column="1" Grid.Row="1" TextColor="White" VerticalOptions="Center"/>
-                    <Entry Text="{Binding newCustomer.email}" Grid.Column="1" Grid.Row="2" TextColor="White" VerticalOptions="Center"/>
-                    <Entry Text="{Binding newCustomer.address}" Grid.Column="1" Grid.Row="3" TextColor="White" VerticalOptions="Center"/>
-                    <Entry Text="{Binding newCustomer.phoneNumber}" Grid.Column="1" Grid.Row="4" TextColor="White" VerticalOptions="Center"/>
-                    <Entry Text="{Binding password1}" Grid.Column="1" Grid.Row="5" TextColor="White" VerticalOptions="Center"
+                    <Entry Text="{Binding newCustomer.firstName}" Grid.Column="1" Grid.Row="0" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry Text="{Binding newCustomer.lastName}" Grid.Column="1" Grid.Row="1" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry Text="{Binding newCustomer.email}" Grid.Column="1" Grid.Row="2" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry Text="{Binding newCustomer.address}" Grid.Column="1" Grid.Row="3" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry Text="{Binding newCustomer.phoneNumber}" Grid.Column="1" Grid.Row="4" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry Text="{Binding password1}" Grid.Column="1" Grid.Row="5" TextColor="Black" VerticalOptions="Center"
                            Placeholder="Enter password..." IsPassword="True"/>
-                    <Entry Text="{Binding password2}" Grid.Column="1" Grid.Row="6" TextColor="White" VerticalOptions="Center"
+                    <Entry Text="{Binding password2}" Grid.Column="1" Grid.Row="6" TextColor="Black" VerticalOptions="Center"
                            Placeholder="Confirm password..." IsPassword="True"/>
                 </Grid>
             </Frame>
-            <Button Text="Register" Clicked="Button_Clicked" CornerRadius="5" Margin="30,5"/>
+            <Button Text="Register" Clicked="Button_Clicked" CornerRadius="5" Margin="30,5"
+                    BackgroundColor="LightGray"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

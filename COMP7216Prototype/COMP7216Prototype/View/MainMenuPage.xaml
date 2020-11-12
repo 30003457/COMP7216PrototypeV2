@@ -6,7 +6,7 @@
         <StackLayout Orientation="Vertical" BackgroundColor="White" VerticalOptions="CenterAndExpand">
             <Frame BackgroundColor="#2196F3" HasShadow="True" CornerRadius="5" Margin="30,10">
                 <StackLayout Orientation="Vertical">
-                    <Frame CornerRadius="5" HasShadow="True" Margin="0,10">
+                    <Frame CornerRadius="5" HasShadow="True" Margin="0,10" BackgroundColor="White">
                         <StackLayout>
                             <Label Text="Available Credits" HorizontalOptions="Center" FontSize="Large"/>
                             <Label Text="{Binding credits, StringFormat='Credits: ${0}'}" />
@@ -21,13 +21,13 @@
                              Margin="0,10" BackgroundColor="PaleGoldenrod" IsVisible="{Binding newReqsVisible}"/>
 
                     <Button  x:Name="CreditRequests" Text="CREDIT REQUESTS"  Clicked="BtnRequest_Clicked" CornerRadius="5"
-                             Margin="0,10"/>
+                             Margin="0,10" BackgroundColor="LightGray"/>
 
                     <Button  x:Name="CreditShare" Text="CREDIT SHARE"  Clicked="BtnShare_Clicked" CornerRadius="5" 
-                             Margin="0,10"/>
+                             Margin="0,10" BackgroundColor="LightGray"/>
 
                     <Button  x:Name="ViewHistory" Text="VIEW HISTORY"  Clicked="BtnHistory_Clicked" CornerRadius="5"
-                             Margin="0,10"/>
+                             Margin="0,10" BackgroundColor="LightGray"/>
                 </StackLayout>
             </Frame>
         </StackLayout>
