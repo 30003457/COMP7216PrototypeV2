@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="COMP7216Prototype.View.MainMenuPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30" Spacing="40" BackgroundColor="Black">
+            <BoxView HeightRequest="10"/>
+            <Image HorizontalOptions="Center" WidthRequest="300" Source="maco.jpg"/>
+            <Frame BackgroundColor="#BF043055" HasShadow="False">
+                <StackLayout Orientation="Vertical" Spacing="10">
+
+                    <Button  x:Name="CreditRequests" Text="CREDIT REQUESTS" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#088da5" Clicked="BtnRequest_Clicked" />
+                    
+                    <Button  x:Name="CreditShare" Text="CREDIT SHARE" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#088da5" Clicked="BtnShare_Clicked" />
+
+                    <Button  x:Name="ViewHistory" Text="VIEW HISTORY" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#088da9" Clicked="BtnHistory_Clicked" />
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

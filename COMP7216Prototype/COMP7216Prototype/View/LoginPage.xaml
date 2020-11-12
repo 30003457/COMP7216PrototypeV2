@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="COMP7216Prototype.View.LoginPage">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+        <StackLayout Orientation="Vertical" Padding="30" Spacing="40" BackgroundColor="Black">
             <BoxView HeightRequest="10"/>
             <Image HorizontalOptions="Center" WidthRequest="300" Source="maco.jpg"/>
             <Frame BackgroundColor="#BF043055" HasShadow="False">

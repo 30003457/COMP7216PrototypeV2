@@ -72,6 +72,8 @@ namespace COMP7216Prototype.View
             if (emailCorrect && passwordCorrect)
             {
                 await DisplayAlert("Success", "Your are logged in: " + Email.Text, "OK");
+                await Navigation.PushAsync(new MainMenuPage());
+
             }
             else if (string.IsNullOrEmpty(Password.Text) || string.IsNullOrEmpty(Email.Text))
             {
