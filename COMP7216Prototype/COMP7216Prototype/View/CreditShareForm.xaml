@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="COMP7216Prototype.View.CreditShareForm">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Credit Share" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Large"/>
+                
+                <Label Text="Receiver" Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Medium"/>
+                <Entry x:Name="entryReceiver" Grid.Column="2" Grid.Row="1" Placeholder="Receiver Account / Phone Number" PlaceholderColor="LightGray"/>
+                
+                <Button x:Name="btnReceiver" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Check Receiver"  BackgroundColor="Black" TextColor="White" Clicked="BtnReceiver_Clicked"/>
+
+                <Label Text="Credit Type" Grid.Column="1" Grid.Row="3" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Medium"/>
+                <Picker x:Name="pickerCreditType" Title="Select Credit Type" TitleColor="Black" Grid.Column="2" Grid.Row="3">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Minutes</x:String>
+                            <x:String>Texts</x:String>
+                            <x:String>Data</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>                    
+                </Picker>
+                <Label  Text="{Binding Source={x:Reference pickerCreditType}, Path=SelectedItem}" />
+
+
+                <Label Text="Credit Amount" Grid.Column="1" Grid.Row="4" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Medium"/>
+                <Entry x:Name="entryCreditAmount" Grid.Column="2" Grid.Row="4"  Placeholder="Credit Amount" PlaceholderColor="LightGray"/>
+
+                <Button x:Name="BtnConfirmation" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6" Text="Submit" BackgroundColor="Black" TextColor="White" Clicked="BtnConfirmation_Clicked"/>
+
+                <Button x:Name="BtnCancel" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" Text="Cancel" BackgroundColor="Black" TextColor="White" Clicked="BtnCancel_Clicked"/>
+
+
+
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
