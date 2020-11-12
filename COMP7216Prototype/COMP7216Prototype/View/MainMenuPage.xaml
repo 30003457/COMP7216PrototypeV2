@@ -8,11 +8,10 @@
             <Image HorizontalOptions="Center" WidthRequest="300" Source="maco.jpg"/>
             <Frame BackgroundColor="#BF043055" HasShadow="False">
                 <StackLayout Orientation="Vertical" Spacing="10">
-
                     <Button  x:Name="CreditRequests" Text="CREDIT REQUESTS" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
                     BackgroundColor="#088da5" Clicked="BtnRequest_Clicked" />
-                    
+
                     <Button  x:Name="CreditShare" Text="CREDIT SHARE" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
                     BackgroundColor="#088da5" Clicked="BtnShare_Clicked" />
@@ -22,7 +21,6 @@
                     BackgroundColor="#088da9" Clicked="BtnHistory_Clicked" />
                 </StackLayout>
             </Frame>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

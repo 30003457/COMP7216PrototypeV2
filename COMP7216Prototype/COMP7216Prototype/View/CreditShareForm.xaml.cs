@@ -102,9 +102,9 @@ namespace COMP7216Prototype.View
 
         }
 
-        private void BtnCancel_Clicked(object sender, EventArgs e)
+        private async void BtnCancel_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new MainPage();
+            await Navigation.PopAsync();
         }
     }
 }
