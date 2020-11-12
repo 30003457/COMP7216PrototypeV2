@@ -1,4 +1,5 @@
-﻿using COMP7216Prototype.Data;
+﻿using COMP7216Prototype.Controller;
+using COMP7216Prototype.Data;
 using COMP7216Prototype.Model;
 using SQLite;
 using System;
@@ -16,10 +17,11 @@ namespace COMP7216Prototype.View
     {
         private bool emailCorrect;
         private bool passwordCorrect;
-        //private SQLiteConnection database;
+        DataAccessLayer dal;
         public LoginPage()
         {
             InitializeComponent();
+            dal = new DataAccessLayer();
 
         }
         private async void BtnReset_Clicked(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace COMP7216Prototype.View
             base.OnAppearing();
 
             //Get All Persons  
-            var personList = await App.SQLiteDb.GetItemsAsync();
+            var personList = await dal.GetItemsAsync();
             if (personList != null)
             {
                 lstPersons.ItemsSource = personList;
@@ -43,7 +45,7 @@ namespace COMP7216Prototype.View
             //Check Email
             if (!string.IsNullOrEmpty(Email.Text))
             {
-                var person = await App.SQLiteDb.GetEmailAsync(Email.Text);
+                var person = await dal.GetEmailAsync(Email.Text);
                 if (person != null)
                 {
                     Email.Text = person.email;
@@ -58,7 +60,7 @@ namespace COMP7216Prototype.View
             //Checking Password
             if (!string.IsNullOrEmpty(Password.Text))
             {
-                var person = await App.SQLiteDb.GetPasswordAsync(Password.Text);
+                var person = await dal.GetPasswordAsync(Password.Text);
                 if (person != null)
                 {
                     Password.Text = person.password;
@@ -87,30 +89,7 @@ namespace COMP7216Prototype.View
         }
         private async void BtnAdd_Clicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Email.Text) && !string.IsNullOrEmpty(Password.Text))
-            {
-                Customers cust = new Customers()
-                {
-                    email = Email.Text, 
-                    password = Password.Text
-                };
-
-                //Add New Person  
-                await App.SQLiteDb.SaveItemAsync(cust);
-                Email.Text = string.Empty;
-                await DisplayAlert("Success", "Person added Successfully", "OK");
-                //Get All Persons  
-                var personList = await App.SQLiteDb.GetItemsAsync();
-
-                if (personList != null)
-                {
-                    lstPersons.ItemsSource = personList;
-                }
-            }
-            else
-            {
-                await DisplayAlert("Required", "Please Enter email and password", "OK");
-            }
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 }
