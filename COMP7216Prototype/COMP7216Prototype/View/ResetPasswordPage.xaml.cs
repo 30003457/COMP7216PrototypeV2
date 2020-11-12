@@ -28,5 +28,10 @@ namespace COMP7216Prototype.View
             }
             
         }
+        private async void BtnBack_Clicked(object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new LoginPage());
+        }
     }
 }
