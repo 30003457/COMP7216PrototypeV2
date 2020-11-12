@@ -3,28 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="COMP7216Prototype.MainPage">
 
-    <ScrollView>
+
         <StackLayout>
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
                 <Label Text="Credit Request Form" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
             </Frame>
-            <Label Text="Enter creditor" FontSize="20" Padding="10,10,30,10"/>
-            <Entry x:Name="CreditorEntryBox" Placeholder="eg. 0221731768"></Entry>
-            <Label Text="Select credit type" FontSize="20" Padding="10,10,30,10"/>
-            <Picker x:Name="CreditTypePicker" Title="Select a credit type">
-                <Picker.Items>
-                    <x:String>Data</x:String>
-                    <x:String>Minutes</x:String>
-                    <x:String>Texts</x:String>
-                </Picker.Items>
-            </Picker>
-            <Label Text="Enter credit amount" FontSize="20" Padding="10,10,30,10"/>
-            <Entry x:Name="CreditAmountEntryBox" Placeholder="eg. 100mb, 20 minutes, 100 texts"></Entry>
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Confirm" Clicked="ConfrimButton"></Button>
-                <Button x:Name="SendRequestButton" Text="Send Request" IsVisible="false" Clicked="SendRequest"></Button>
+        <Frame BackgroundColor="#2196F3" Margin="30,10" CornerRadius="5" VerticalOptions="CenterAndExpand"
+               HasShadow="True">
+            <StackLayout>
+                <Label Text="Enter creditor" FontSize="20" Padding="10,10,30,10"
+                       TextColor="White"/>
+                <Entry x:Name="CreditorEntryBox" Placeholder="eg. 0221731768"
+                       TextColor="White" ></Entry>
+                <Label Text="Select credit type" FontSize="20" Padding="10,10,30,10"
+                       TextColor="White"/>
+                <Picker x:Name="CreditTypePicker" Title="Select a credit type"
+                        TextColor="White">
+                    <Picker.Items>
+                        <x:String>Data</x:String>
+                        <x:String>Minutes</x:String>
+                        <x:String>Texts</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Label Text="Enter credit amount" FontSize="20" Padding="10,10,30,10"
+                       TextColor="White"/>
+                <Entry x:Name="CreditAmountEntryBox" Placeholder="eg. 100mb, 20 minutes, 100 texts"
+                       TextColor="White"></Entry>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                    <Button Text="Confirm" Clicked="ConfrimButton"
+                            CornerRadius="5"></Button>
+                    <Button x:Name="SendRequestButton" Text="Send Request" IsVisible="false" Clicked="SendRequest"
+                            CornerRadius="5"></Button>
+                </StackLayout>
             </StackLayout>
-            <Label Text="{Binding status}" TextColor="White" BackgroundColor="Black"/>
-        </StackLayout>
-    </ScrollView>
+        </Frame>
+    </StackLayout>
+
 </ContentPage>

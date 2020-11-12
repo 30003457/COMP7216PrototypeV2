@@ -7,7 +7,7 @@
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
                 <Label Text="Search Results" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
             </Frame>
-            <ListView x:Name="lvResults" Margin="30,10">
+            <ListView x:Name="lvResults" Margin="30,10" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -14,6 +14,8 @@ namespace COMP7216Prototype
             InitializeComponent();
 
             MainPage = new NavigationPage(new LoginPage());
+            COMP7216Prototype.Controller.DataAccessLayer dal = new Controller.DataAccessLayer();
+            dal.CreateDummyTables();
         }
 
         protected override void OnStart()

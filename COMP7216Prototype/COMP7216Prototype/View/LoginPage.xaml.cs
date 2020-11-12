@@ -18,11 +18,11 @@ namespace COMP7216Prototype.View
         private bool emailCorrect;
         private bool passwordCorrect;
         DataAccessLayer dal;
+        public List<CreditRequests> requests { get; set; }
         public LoginPage()
         {
             InitializeComponent();
             dal = new DataAccessLayer();
-
         }
         private async void BtnReset_Clicked(object sender, EventArgs e)
         {
@@ -34,10 +34,6 @@ namespace COMP7216Prototype.View
 
             //Get All Persons  
             var personList = await dal.GetItemsAsync();
-            if (personList != null)
-            {
-                lstPersons.ItemsSource = personList;
-            }
         }
 
         private async void BtnLogin_Clicked(object sender, EventArgs e)
@@ -73,8 +69,9 @@ namespace COMP7216Prototype.View
             }
             if (emailCorrect && passwordCorrect)
             {
+                var person = dal.db.Query<Customers>($"SELECT * FROM Customers WHERE email='{Email.Text}'").First();
                 await DisplayAlert("Success", "Your are logged in: " + Email.Text, "OK");
-                await Navigation.PushAsync(new MainMenuPage());
+                await Navigation.PushAsync(new MainMenuPage(person));
 
             }
             else if (string.IsNullOrEmpty(Password.Text) || string.IsNullOrEmpty(Email.Text))

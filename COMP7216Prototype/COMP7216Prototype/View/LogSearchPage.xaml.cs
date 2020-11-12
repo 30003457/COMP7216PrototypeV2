@@ -1,4 +1,5 @@
 ﻿using COMP7216Prototype.Controller;
+using COMP7216Prototype.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,35 +16,37 @@ namespace COMP7216Prototype.View
     {
         
         Search searchController;
-        public LogSearchPage()
+        public Customers loggedInUser { get; set; }
+        public LogSearchPage(Customers _loggedInUser)
         {
             InitializeComponent();
+            loggedInUser = _loggedInUser;
             searchController = new Search();
             BindingContext = searchController;
         }
 
         private async void SearchSharesClicked(object sender, EventArgs e)
         {
-            var results = searchController.SearchShares(entryShareSearch.Text);
-            await Navigation.PushAsync(new ResultsReportPage(results));
+            var results = searchController.SearchShares(entryShareSearch.Text, loggedInUser);
+            await Navigation.PushAsync(new ResultsReportPage(results, loggedInUser));
         }
 
         private async void SearchRequestsClicked(object sender, EventArgs e)
         {
-            var results = searchController.SearchShares(entryRequestSearch.Text);
-            await Navigation.PushAsync(new ResultsReportPage(results));
+            var results = searchController.SearchShares(entryRequestSearch.Text, loggedInUser);
+            await Navigation.PushAsync(new ResultsReportPage(results, loggedInUser));
         }
 
         private async void ViewAllSharesClicked(object sender, EventArgs e)
         {
-            var results = searchController.ViewShares();
-            await Navigation.PushAsync(new ResultsReportPage(results));
+            var results = searchController.ViewShares(loggedInUser);
+            await Navigation.PushAsync(new ResultsReportPage(results, loggedInUser));
         }
 
         private async void ViewAllRequestsClicked(object sender, EventArgs e)
         {
-            var results = searchController.ViewRequests();
-            await Navigation.PushAsync(new ResultsReportPage(results));
+            var results = searchController.ViewRequests(loggedInUser);
+            await Navigation.PushAsync(new ResultsReportPage(results, loggedInUser));
         }
     }
 }

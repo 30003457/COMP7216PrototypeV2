@@ -36,11 +36,17 @@ namespace COMP7216Prototype.Controller
         {
             db = new SQLiteConnection(DatabasePath);
             dbAsync = new SQLiteAsyncConnection(DatabasePath);
-            CreateDummyTables();
+            //CreateDummyTables();
         }
 
-        private void CreateDummyTables()
+        public void CreateDummyTables()
         {
+            db.DropTable<Customers>();
+            db.DropTable<CreditTypes>();
+            db.DropTable<Credits>();
+            db.DropTable<CreditRequests>();
+            db.DropTable<CreditShares>();
+
             //customers
             db.CreateTable<Customers>();
             db.Insert(new Customers
@@ -48,8 +54,8 @@ namespace COMP7216Prototype.Controller
                 firstName = "Bob",
                 lastName = "Crawford",
                 address = "123 Some Street",
-                email = "bob.crawford@email.com",
-                password = "123123123",
+                email = "bob@email.com",
+                password = "1",
                 phoneNumber = "123-123123"
             });
 
@@ -58,8 +64,8 @@ namespace COMP7216Prototype.Controller
                 firstName = "Joe",
                 lastName = "Crawford",
                 address = "123 Some Street",
-                email = "joe.crawford@email.com",
-                password = "123123123",
+                email = "joe@email.com",
+                password = "1",
                 phoneNumber = "123-123123"
             });
 
@@ -75,7 +81,7 @@ namespace COMP7216Prototype.Controller
             });
             db.Insert(new CreditTypes
             {
-                creditType = "GB"
+                creditType = "GB data"
             });
             db.Insert(new CreditTypes
             {
@@ -83,6 +89,7 @@ namespace COMP7216Prototype.Controller
             });
 
             //credits
+            //Bob
             db.CreateTable<Credits>();
             db.Insert(new Credits
             {
@@ -90,33 +97,77 @@ namespace COMP7216Prototype.Controller
                 creditTypeId = 1,
                 customerId = 1
             });
+            db.Insert(new Credits
+            {
+                amount = 100,
+                creditTypeId = 2,
+                customerId = 1
+            });
+            db.Insert(new Credits
+            {
+                amount = 100,
+                creditTypeId = 3,
+                customerId = 1
+            });
+            db.Insert(new Credits
+            {
+                amount = 100,
+                creditTypeId = 4,
+                customerId = 1
+            });
 
-            //credit requests
+            //Joe
+            db.Insert(new Credits
+            {
+                amount = 0,
+                creditTypeId = 1,
+                customerId = 2
+            });
+            db.Insert(new Credits
+            {
+                amount = 0,
+                creditTypeId = 2,
+                customerId = 2
+            });
+            db.Insert(new Credits
+            {
+                amount = 0,
+                creditTypeId = 3,
+                customerId = 2
+            });
+            db.Insert(new Credits
+            {
+                amount = 0,
+                creditTypeId = 4,
+                customerId = 2
+            });
+
+            ////credit requests
             db.CreateTable<CreditRequests>();
-            db.Insert(new CreditRequests
-            {
-                creditAmount = 20,
-                creditTypeId = 1,
-                requestAccepted = true,
-                requesterId = 2,
-                shareId = 1,
-                shareUserId = 1,
-                timeStampDate = DateTime.Now.ToString("dd/MM/yyyy"),
-                timeStampTime = DateTime.Now.ToString("hh:mm")
-            });
+            //db.Insert(new CreditRequests
+            //{
+            //    creditAmount = 20,
+            //    creditTypeId = 1,
+            //    requestAccepted = true,
+            //    requesterId = 2,
+            //    shareId = 1,
+            //    shareUserId = 1,
+            //    timeStampDate = DateTime.Now.ToString("dd/MM/yyyy"),
+            //    timeStampTime = DateTime.Now.ToString("hh:mm")
+            //});
 
-            //credit shares
+            ////credit shares
             db.CreateTable<CreditShares>();
-            db.Insert(new CreditShares
-            {
-                creditAmount = 20,
-                creditTypeId = 1,
-                receiverUserId = 2,
-                requestId = -1,
-                shareUserId = 1,
-                timeStampDate = DateTime.Now.ToString("dd/MM/yyyy"),
-                timeStampTime = DateTime.Now.ToString("hh:mm")
-            });
+            //db.Insert(new CreditShares
+            //{
+            //    creditAmount = 20,
+            //    creditTypeId = 1,
+            //    receiverUserId = 2,
+            //    requestId = -1,
+            //    shareUserId = 1,
+            //    timeStampDate = DateTime.Now.ToString("dd/MM/yyyy"),
+            //    timeStampTime = DateTime.Now.ToString("hh:mm")
+            //});
         }
 
         //Insert and Update new record  

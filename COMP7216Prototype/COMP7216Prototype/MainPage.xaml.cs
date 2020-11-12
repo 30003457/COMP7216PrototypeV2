@@ -14,8 +14,8 @@ namespace COMP7216Prototype
     {
         DataAccessLayer dal = new DataAccessLayer();
         CreditRequests cr = new CreditRequests();
-        public string status { get; set; }
-        public MainPage()
+        public Customers loggedInUser { get; set; }
+        public MainPage(Customers _loggedInUser)
         {
             InitializeComponent();
             //var results = dal.db.Query<CreditTypes>("SELECT * FROM CreditTypes");
@@ -25,6 +25,7 @@ namespace COMP7216Prototype
             //}
             //BindingContext = null;
             //BindingContext = this;
+            loggedInUser = _loggedInUser;
         }
 
         //Validates the form, checking that all entry boxes are filled and then confirms the form allowing the user to send their request

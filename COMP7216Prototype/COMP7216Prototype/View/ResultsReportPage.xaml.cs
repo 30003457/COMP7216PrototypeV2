@@ -15,10 +15,10 @@ namespace COMP7216Prototype.View
     public partial class ResultsReportPage : ContentPage
     {
         Report reportController;
-        public ResultsReportPage(List<CreditRequests> requests)
+        public ResultsReportPage(List<CreditRequests> requests, Customers user)
         {
             InitializeComponent();
-            reportController = new Report();
+            reportController = new Report(user);
             reportController.Requests = requests;
             reportController.SetRequestStatements();
             lvResults.ItemsSource = null;
@@ -26,10 +26,10 @@ namespace COMP7216Prototype.View
             BindingContext = reportController;
         }
 
-        public ResultsReportPage(List<CreditShares> shares)
+        public ResultsReportPage(List<CreditShares> shares, Customers user)
         {
             InitializeComponent();
-            reportController = new Report();
+            reportController = new Report(user);
             reportController.Shares = shares;
             reportController.SetShareStatements();
             lvResults.ItemsSource = null;

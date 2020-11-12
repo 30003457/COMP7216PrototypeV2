@@ -3,22 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="COMP7216Prototype.View.MainMenuPage">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Padding="30" Spacing="40" BackgroundColor="Black">
-            <BoxView HeightRequest="10"/>
-            <Image HorizontalOptions="Center" WidthRequest="300" Source="maco.jpg"/>
-            <Frame BackgroundColor="#BF043055" HasShadow="False">
-                <StackLayout Orientation="Vertical" Spacing="10">
-                    <Button  x:Name="CreditRequests" Text="CREDIT REQUESTS" TextColor="White"  
-                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="#088da5" Clicked="BtnRequest_Clicked" />
+        <StackLayout Orientation="Vertical" BackgroundColor="White" VerticalOptions="CenterAndExpand">
+            <Frame BackgroundColor="#2196F3" HasShadow="True" CornerRadius="5" Margin="30,10">
+                <StackLayout Orientation="Vertical">
+                    <Frame CornerRadius="5" HasShadow="True" Margin="0,10">
+                        <StackLayout>
+                            <Label Text="Available Credits" HorizontalOptions="Center" FontSize="Large"/>
+                            <Label Text="{Binding credits, StringFormat='Credits: ${0}'}" />
+                            <Label Text="{Binding minutes, StringFormat='Minutes: {0}'}" />
+                            <Label Text="{Binding data, StringFormat='Data: {0} GB'}" />
+                            <Label Text="{Binding texts, StringFormat='Texts: {0}'}" />
+                        </StackLayout>
+                    </Frame>
+                    
+                    <Button  x:Name="CreditRequests" Text="CREDIT REQUESTS"  Clicked="BtnRequest_Clicked" CornerRadius="5"
+                             Margin="0,10"/>
 
-                    <Button  x:Name="CreditShare" Text="CREDIT SHARE" TextColor="White"  
-                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="#088da5" Clicked="BtnShare_Clicked" />
+                    <Button  x:Name="CreditShare" Text="CREDIT SHARE"  Clicked="BtnShare_Clicked" CornerRadius="5" 
+                             Margin="0,10"/>
 
-                    <Button  x:Name="ViewHistory" Text="VIEW HISTORY" TextColor="White"  
-                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="#088da9" Clicked="BtnHistory_Clicked" />
+                    <Button  x:Name="ViewHistory" Text="VIEW HISTORY"  Clicked="BtnHistory_Clicked" CornerRadius="5"
+                             Margin="0,10"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

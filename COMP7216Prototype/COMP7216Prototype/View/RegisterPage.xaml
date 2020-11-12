@@ -7,7 +7,7 @@
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
                 <Label Text="Register" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
             </Frame>
-            <Frame Padding="10,10" CornerRadius="5" BackgroundColor="#2196F3"
+            <Frame Padding="30,10" CornerRadius="5" BackgroundColor="#2196F3"
                    Margin="30,5">
                 <Grid Padding="0,0">
                     <Grid.ColumnDefinitions>
