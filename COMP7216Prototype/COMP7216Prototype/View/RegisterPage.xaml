@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="COMP7216Prototype.View.RegisterPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Label Text="Register" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <Frame Padding="10,10" CornerRadius="5" BackgroundColor="#2196F3"
+                   Margin="30,5">
+                <Grid Padding="0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="First Name:" Grid.Row="0" TextColor="White" VerticalOptions="Center"/>
+                    <Label Text="Last Name:" Grid.Row="1" TextColor="White" VerticalOptions="Center"/>
+                    <Label Text="Email:" Grid.Row="2" TextColor="White" VerticalOptions="Center"/>
+                    <Label Text="Address:" Grid.Row="3" TextColor="White" VerticalOptions="Center"/>
+                    <Label Text="Phone Number:" Grid.Row="4" TextColor="White" VerticalOptions="Center"/>
+                    <Label Text="Password:" Grid.Row="5" TextColor="White" VerticalOptions="Center"/>
+                    <Entry Text="{Binding newCustomer.firstName}" Grid.Column="1" Grid.Row="0" TextColor="White" VerticalOptions="Center"/>
+                    <Entry Text="{Binding newCustomer.lastName}" Grid.Column="1" Grid.Row="1" TextColor="White" VerticalOptions="Center"/>
+                    <Entry Text="{Binding newCustomer.email}" Grid.Column="1" Grid.Row="2" TextColor="White" VerticalOptions="Center"/>
+                    <Entry Text="{Binding newCustomer.address}" Grid.Column="1" Grid.Row="3" TextColor="White" VerticalOptions="Center"/>
+                    <Entry Text="{Binding newCustomer.phoneNumber}" Grid.Column="1" Grid.Row="4" TextColor="White" VerticalOptions="Center"/>
+                    <Entry Text="{Binding password1}" Grid.Column="1" Grid.Row="5" TextColor="White" VerticalOptions="Center"
+                           Placeholder="Enter password..." IsPassword="True"/>
+                    <Entry Text="{Binding password2}" Grid.Column="1" Grid.Row="6" TextColor="White" VerticalOptions="Center"
+                           Placeholder="Confirm password..." IsPassword="True"/>
+                </Grid>
+            </Frame>
+            <Button Text="Register" Clicked="Button_Clicked" CornerRadius="5" Margin="30,5"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -24,7 +24,7 @@
             <Button  x:Name="Login" Text="Log In" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
                     BackgroundColor="#088da5" Clicked="BtnLogin_Clicked" />
-            <Button  x:Name="Add" Text="Add" TextColor="White"  
+            <Button  x:Name="Add" Text="Register" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
                     BackgroundColor="#088da5" Clicked="BtnAdd_Clicked" />
             

@@ -82,30 +82,7 @@ namespace COMP7216Prototype.View
         }
         private async void BtnAdd_Clicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Email.Text) && !string.IsNullOrEmpty(Password.Text))
-            {
-                Users user = new Users()
-                {
-                    Email = Email.Text, 
-                    Password = Password.Text
-                };
-
-                //Add New Person  
-                await App.SQLiteDb.SaveItemAsync(user);
-                Email.Text = string.Empty;
-                await DisplayAlert("Success", "Person added Successfully", "OK");
-                //Get All Persons  
-                var personList = await App.SQLiteDb.GetItemsAsync();
-
-                if (personList != null)
-                {
-                    lstPersons.ItemsSource = personList;
-                }
-            }
-            else
-            {
-                await DisplayAlert("Required", "Please Enter email and password", "OK");
-            }
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 }
