@@ -13,6 +13,7 @@ namespace COMP7216Prototype
         public MainPage()
         {
             InitializeComponent();
+
         }
     }
 }
