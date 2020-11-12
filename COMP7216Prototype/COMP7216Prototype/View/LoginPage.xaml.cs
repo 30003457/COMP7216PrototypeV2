@@ -47,18 +47,14 @@ namespace COMP7216Prototype.View
                 if (person != null)
                 {
                     Email.Text = person.email;
-                    await DisplayAlert("Success", "Person Name: " + person.email, "OK");
+                    emailCorrect = true;
                 }
                 else if (person == null)
                 {
-
-                    await DisplayAlert("Wrong", "Incorrect Email, Please try again ", "OK");
+                    emailCorrect = false;
                 }
             }
-            else
-            {
-                await DisplayAlert("Required", "Please fill in all the planks", "OK");
-            }
+
             //Checking Password
             if (!string.IsNullOrEmpty(Password.Text))
             {
@@ -66,22 +62,26 @@ namespace COMP7216Prototype.View
                 if (person != null)
                 {
                     Password.Text = person.password;
-                    await DisplayAlert("Success", "Password: " + person.password, "OK");
+                    passwordCorrect = true;
                 }
                 else if (person == null)
                 {
-
-                    await DisplayAlert("Wrong", "Incorrect Password, Please try again ", "OK");
+                    passwordCorrect = false;
                 }
             }
-            //if (emailCorrect && passw)
-            //{
-
-            //}
-            else
+            if (emailCorrect && passwordCorrect)
+            {
+                await DisplayAlert("Success", "Your are logged in: " + Email.Text, "OK");
+            }
+            else if (string.IsNullOrEmpty(Password.Text) || string.IsNullOrEmpty(Email.Text))
             {
                 await DisplayAlert("Required", "Please fill in all the planks", "OK");
             }
+            else if (!emailCorrect || !passwordCorrect)
+            {
+                await DisplayAlert("Wrong", "Incorrect Info, Please try again ", "OK");
+            }
+
         }
         private async void BtnAdd_Clicked(object sender, EventArgs e)
         {
