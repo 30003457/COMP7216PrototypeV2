@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMP7216Prototype.UWP", "CO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMP7216Prototype.Android", "COMP7216Prototype.Android\COMP7216Prototype.Android.csproj", "{5546EAF1-5D48-44B4-936B-76035367CFDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMP7216Prototype", "COMP7216Prototype\COMP7216Prototype.csproj", "{EAEA5AFE-4E95-4531-891C-73F06D434C2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "COMP7216Prototype", "COMP7216Prototype\COMP7216Prototype.csproj", "{EAEA5AFE-4E95-4531-891C-73F06D434C2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,9 +4,11 @@
     xmlns:forms="using:Xamarin.Forms.Platform.UWP"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:COMP7216Prototype.UWP"
+   
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Margin="556,106,0,0" VerticalAlignment="Top" Height="79" Width="194">Log In Page</Button>
 
     </Grid>
 </forms:WindowsPage>
