@@ -20,11 +20,13 @@ namespace COMP7216Prototype.View
         public string credits { get; set; }
         public string texts { get; set; }
         public Customers loggedInUser { get; set; }
+        public bool newReqsVisible { get; set; }
         public MainMenuPage(Customers _loggedInUser)
         {
             InitializeComponent();
             loggedInUser = _loggedInUser;
             GetUserCredits();
+            CheckRequests();
             BindingContext = this;
         }
 
@@ -32,8 +34,16 @@ namespace COMP7216Prototype.View
         {
             base.OnAppearing();
             GetUserCredits();
+            CheckRequests();
             BindingContext = null;
             BindingContext = this;
+        }
+
+        private void CheckRequests()
+        {
+            var requests = dal.db.Query<CreditRequests>($"SELECT * FROM CreditRequests WHERE shareUserId={loggedInUser.customerId} AND requestAccepted=False");
+            if (requests.Count > 0) newReqsVisible = true;
+            else newReqsVisible = false;
         }
 
         private void GetUserCredits()
@@ -58,6 +68,11 @@ namespace COMP7216Prototype.View
         private async void BtnHistory_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LogSearchPage(loggedInUser));
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ViewRequests(loggedInUser));
         }
     }
 

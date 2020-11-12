@@ -27,6 +27,19 @@ namespace COMP7216Prototype.View
             BindingContext = this;
 		}
 
+        public CreditShareForm(Customers _loggedInUser, CreditRequests request)
+        {
+            InitializeComponent();
+            loggedInUser = _loggedInUser;
+            entryCreditAmount.Text = request.creditAmount.ToString();
+            string requestPhNum = dal.db.Query<Customers>($"SELECT * FROM Customers WHERE customerId={request.requesterId}").First().phoneNumber;
+            entryReceiver.Text = requestPhNum;
+            entryCreditAmount.Text = request.creditAmount.ToString();
+            pickerCreditType.SelectedIndex = request.creditTypeId - 1;
+            queryVisible = false;
+            BindingContext = this;
+        }
+
         public async void BtnConfirmation_Clicked(object sender, EventArgs e) 
         {
 
@@ -55,8 +68,8 @@ namespace COMP7216Prototype.View
                 int thisReqId = -1;
                 try
                 {
-                    var request = dal.db.Query<CreditRequests>($"SELECT * FROM CreditRequests WHERE requesterId={receiverId} AND creditAmount<={senderAmount} AND requestAccepted='False'").First();
-                    dal.db.Query<CreditRequests>($"UPDATE CreditRequests SET requestAccepted='True' WHERE requesterId={receiverId} AND creditAmount<={senderAmount} AND requestAccepted='False'");
+                    var request = dal.db.Query<CreditRequests>($"SELECT * FROM CreditRequests WHERE requesterId={receiverId} AND creditAmount<={senderAmount} AND requestAccepted=False").First();
+                    dal.db.Query<CreditRequests>($"UPDATE CreditRequests SET requestAccepted=True WHERE requesterId={receiverId} AND creditAmount<={senderAmount} AND requestAccepted=False");
                     thisReqId = request.requestId;
                 }
                 catch (Exception) { }
