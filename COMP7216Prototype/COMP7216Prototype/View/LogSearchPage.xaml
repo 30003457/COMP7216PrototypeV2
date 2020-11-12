@@ -7,31 +7,39 @@
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
                 <Label Text="Credit Logs" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
             </Frame>
-            <StackLayout Margin="30,10">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition Width="0.33*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Entry Placeholder="Search..."/>
-                    <Button Text="Search" Clicked="Button_Clicked" Grid.Column="1"/>
-                    <Picker Grid.Row="1" HorizontalOptions="Center" WidthRequest="200" Grid.ColumnSpan="2"/>
-                </Grid>
-                <ListView>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout>
-                                    
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+            <StackLayout Margin="30,10" VerticalOptions="CenterAndExpand">
+                <Frame Margin="0,0,0,20" HasShadow="True" CornerRadius="5" BackgroundColor="#2196F3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Text="Credit Shares" TextColor="White" FontSize="Large"/>
+                        <Entry x:Name="entryShareSearch" Placeholder="Search here..." Grid.Row="1" TextColor="White"/>
+                        <Button Text="Search" Clicked="SearchSharesClicked" Grid.Column="1" Grid.Row="1" CornerRadius="5"/>
+                        <Button Text="View All" Clicked="ViewAllSharesClicked" Grid.Row="2" CornerRadius="5" Grid.ColumnSpan="2"/>
+                    </Grid>
+                </Frame>
+                <Frame HasShadow="True" CornerRadius="5" BackgroundColor="#2196F3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Text="Credit Requests" TextColor="White" FontSize="Large"/>
+                        <Entry x:Name="entryRequestSearch" Placeholder="Search here..." Grid.Row="1" TextColor="White"/>
+                        <Button Text="Search" Clicked="SearchRequestsClicked" Grid.Row="1" Grid.Column="1" CornerRadius="5"/>
+                        <Button Text="View All" Clicked="ViewAllRequestsClicked" Grid.Row="2" CornerRadius="5" Grid.ColumnSpan="2"/>
+                    </Grid>
+                </Frame>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
