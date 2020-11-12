@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using COMP7216Prototype.Model;
 
 namespace COMP7216Prototype
 {
@@ -13,13 +14,13 @@ namespace COMP7216Prototype
         public SQLiteHelper(string dbPath)
         {
             db = new SQLiteAsyncConnection(dbPath);
-            db.CreateTableAsync<Users>().Wait();
+            db.CreateTableAsync<Customers>().Wait();
         }
 
         //Insert and Update new record  
-        public Task<int> SaveItemAsync(Users person)
+        public Task<int> SaveItemAsync(Customers person)
         {
-            if (person.ID != 0)
+            if (person.customerId != 0)
             {
                 return db.UpdateAsync(person);
             }
@@ -30,30 +31,30 @@ namespace COMP7216Prototype
         }
 
         //Delete  
-        public Task<int> DeleteItemAsync(Users person)
+        public Task<int> DeleteItemAsync(Customers person)
         {
             return db.DeleteAsync(person);
         }
 
         //Read All Items  
-        public Task<List<Users>> GetItemsAsync()
+        public Task<List<Customers>> GetItemsAsync()
         {
-            return db.Table<Users>().ToListAsync();
+            return db.Table<Customers>().ToListAsync();
         }
 
 
         //Read Item  
-        public Task<Users> GetItemAsync(string userEmail)
+        public Task<Customers> GetItemAsync(string userEmail)
         {
-            return db.Table<Users>().Where(i => i.Email == userEmail).FirstOrDefaultAsync();
+            return db.Table<Customers>().Where(i => i.email == userEmail).FirstOrDefaultAsync();
         }
-        public Task<Users> GetEmailAsync(string userEmail)
+        public Task<Customers> GetEmailAsync(string userEmail)
         {
-            return db.Table<Users>().Where(i => i.Email == userEmail).FirstOrDefaultAsync();
+            return db.Table<Customers>().Where(i => i.email == userEmail).FirstOrDefaultAsync();
         }
-        public Task<Users> GetPasswordAsync(string userPassword)
+        public Task<Customers> GetPasswordAsync(string userPassword)
         {
-            return db.Table<Users>().Where(i => i.Password == userPassword).FirstOrDefaultAsync();
+            return db.Table<Customers>().Where(i => i.password == userPassword).FirstOrDefaultAsync();
         }
     }
 }
