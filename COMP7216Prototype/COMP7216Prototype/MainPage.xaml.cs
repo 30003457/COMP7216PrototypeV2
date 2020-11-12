@@ -1,4 +1,6 @@
-﻿using System;
+﻿using COMP7216Prototype.Controller;
+using COMP7216Prototype.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace COMP7216Prototype
 {
     public partial class MainPage : ContentPage
     {
+        new DataAccessLayer dal = new DataAccessLayer();
+        new CreditRequests cr;
         public MainPage()
         {
             InitializeComponent();
@@ -21,7 +25,7 @@ namespace COMP7216Prototype
             var creditorValue = CreditorEntryBox.Text;
             var dataTypeValue = CreditTypePicker.SelectedItem;
             var amountValue = CreditAmountEntryBox.Text;
-
+            
             if(creditorValue == "" || dataTypeValue == null || amountValue == "")
             {
                 await DisplayAlert("Alert", "Please filled all fields before confirming", "OK");
@@ -32,6 +36,22 @@ namespace COMP7216Prototype
                     " button to send your credit request to the selected creditors", "OK");
 
                 SendRequestButton.SetValue(IsVisibleProperty, true);
+
+                //int amount = int.Parse(amountValue.ToString());
+                //int creditType = int.Parse(dataTypeValue.ToString());
+                //DateTime time = DateTime.Now.ToLocalTime();
+
+                //cr.creditAmount = amount;
+                //cr.timeStampDate = DateTime.Now.ToString();
+                //cr.timeStampTime = time.ToString();
+                //cr.creditTypeId = creditType;
+
+                ////Fix
+                //cr.requesterId = 0;
+                //cr.requesterId = 1;
+                //cr.shareUserId = 2;
+                //cr.shareId = 3;
+                //cr.statement = "Fix";
             }
         }
 
@@ -43,6 +63,23 @@ namespace COMP7216Prototype
 
             SendRequestButton.SetValue(IsVisibleProperty, false);
 
+            int amount = int.Parse(CreditAmountEntryBox.Text.ToString());
+            int creditType = int.Parse(CreditTypePicker.SelectedItem.ToString());
+            DateTime time = DateTime.Now.ToLocalTime();
+
+            cr.creditAmount = amount;
+            cr.timeStampDate = DateTime.Now.ToString();
+            cr.timeStampTime = time.ToString();
+            cr.creditTypeId = creditType;
+
+            //Fix
+            cr.requesterId = 0;
+            cr.requesterId = 1;
+            cr.shareUserId = 2;
+            cr.shareId = 3;
+            cr.statement = "Fix";
+
+            //Resets entry boxes
             CreditorEntryBox.Text = "";
             CreditTypePicker.SelectedItem = null;
             CreditAmountEntryBox.Text = "";
