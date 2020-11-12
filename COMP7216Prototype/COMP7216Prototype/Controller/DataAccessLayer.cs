@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using COMP7216Prototype.Controller;
 using COMP7216Prototype.Model;
 using SQLite;
@@ -12,6 +13,7 @@ namespace COMP7216Prototype.Controller
     {
         public const string DatabaseFilename = "CreditShareSystem.db3";
         public SQLiteConnection db { get; set; }
+        public SQLiteAsyncConnection dbAsync { get; set; }
 
         public const SQLiteOpenFlags Flags =
             // open the database in read/write mode
@@ -33,6 +35,7 @@ namespace COMP7216Prototype.Controller
         public DataAccessLayer()
         {
             db = new SQLiteConnection(DatabasePath);
+            dbAsync = new SQLiteAsyncConnection(DatabasePath);
             CreateDummyTables();
         }
 
@@ -114,6 +117,46 @@ namespace COMP7216Prototype.Controller
                 timeStampDate = DateTime.Now.ToString("dd/MM/yyyy"),
                 timeStampTime = DateTime.Now.ToString("hh:mm")
             });
+        }
+
+        //Insert and Update new record  
+        public Task<int> SaveItemAsync(Customers person)
+        {
+            if (person.customerId != 0)
+            {
+                return dbAsync.UpdateAsync(person);
+            }
+            else
+            {
+                return dbAsync.InsertAsync(person);
+            }
+        }
+
+        //Delete  
+        public Task<int> DeleteItemAsync(Customers person)
+        {
+            return dbAsync.DeleteAsync(person);
+        }
+
+        //Read All Items  
+        public Task<List<Customers>> GetItemsAsync()
+        {
+            return dbAsync.Table<Customers>().ToListAsync();
+        }
+
+
+        //Read Item  
+        public Task<Customers> GetItemAsync(string userEmail)
+        {
+            return dbAsync.Table<Customers>().Where(i => i.email == userEmail).FirstOrDefaultAsync();
+        }
+        public Task<Customers> GetEmailAsync(string userEmail)
+        {
+            return dbAsync.Table<Customers>().Where(i => i.email == userEmail).FirstOrDefaultAsync();
+        }
+        public Task<Customers> GetPasswordAsync(string userPassword)
+        {
+            return dbAsync.Table<Customers>().Where(i => i.password == userPassword).FirstOrDefaultAsync();
         }
     }
 }
