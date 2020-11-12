@@ -18,13 +18,13 @@ namespace COMP7216Prototype
         public MainPage()
         {
             InitializeComponent();
-            var results = dal.db.Query<CreditTypes>("SELECT * FROM CreditTypes");
-            foreach (var item in results)
-            {
-                status += $"{item.creditTypeId} - {item.creditType}\n";
-            }
-            BindingContext = null;
-            BindingContext = this;
+            //var results = dal.db.Query<CreditTypes>("SELECT * FROM CreditTypes");
+            //foreach (var item in results)
+            //{
+            //    status += $"{item.creditTypeId} - {item.creditType}\n";
+            //}
+            //BindingContext = null;
+            //BindingContext = this;
         }
 
         //Validates the form, checking that all entry boxes are filled and then confirms the form allowing the user to send their request
